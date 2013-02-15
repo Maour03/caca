@@ -223,3 +223,21 @@ minetest.register_node("caca:caca_bricks", {
     tiles = {"caca_brickk.png"},
     groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2},
 })
+
+minetest.register_craft({
+	output = '"caca:caca_bricks" 4',
+	recipe = {
+		{'', '', ''},
+		{'caca:caca_ingot', 'caca:caca_ingot', ''},
+		{'caca:caca_ingot', 'caca:caca_ingot', ''},
+	}
+})
+
+minetest.register_craft({
+	output = '"caca:caca_cobble" 4',
+	recipe = {
+		{'', '', ''},
+		{'', 'caca:caca_ingot', ''},
+		{'caca:caca_ingot', 'caca:caca_ingot', 'caca:caca ingot' },
+	}
+})
