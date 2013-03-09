@@ -241,3 +241,75 @@ minetest.register_craft({
 		{'caca:caca_ingot', 'caca:caca_ingot', 'caca:caca ingot' },
 	}
 })
+
+minetest.register_craft({
+	output = '"caca:toilet" 1',
+	recipe = {
+		{'default:cobble', '', ''},
+		{'default:paper', 'default:cobble', 'default:cobble'},
+		{'default:cobble', 'default:cobble', 'default:cobble'},
+	}
+})
+
+minetest.register_node("caca:toilet", {
+    description = "Toilet",
+    tiles = {"caca_toilet_top.png","caca_toilet_bottom.png","caca_toilet_side.png","caca_toilet_side.png","caca_toilet_front.png"},
+    paramtype2 = "facedir",
+    groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2},
+})
+
+minetest.register_node("caca:caca_flowing", {
+	description = "Flowing",
+	inventory_image = minetest.inventorycube("default_lava.png"),
+	drawtype = "flowingliquid",
+	tiles = {"default_lava.png"},
+	special_tiles = {
+		{
+			image="caca_flowing_animated.png",
+			backface_culling=false,
+			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.3}
+		},
+		{
+			image="caca_flowing_animated.png",
+			backface_culling=true,
+			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.3}
+		},
+	},
+	paramtype = "light",
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	drop = "",
+	liquidtype = "flowing",
+	liquid_alternative_flowing = "caca:caca_flowing",
+	liquid_alternative_source = "caca:caca_source",
+	liquid_viscosity = LAVA_VISC,
+--	post_effect_color = {a=192, r=255, g=64, b=0},
+	groups = {liquid=2, puts_out_fire=1},
+})
+
+minetest.register_node("caca:caca_source", {
+	description = "Source",
+	inventory_image = minetest.inventorycube("default_lava.png"),
+	drawtype = "liquid",
+	tiles = {
+		{name="caca_source_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}}
+	},
+	special_tiles = {
+		-- New-style lava source material (mostly unused)
+		{name="default_lava.png", backface_culling=false},
+	},
+	paramtype = "light",
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	drop = "",
+	liquidtype = "source",
+	liquid_alternative_flowing = "caca:caca_flowing",
+	liquid_alternative_source = "caca:caca_source",
+	liquid_viscosity = LAVA_VISC,
+--	post_effect_color = {a=192, r=255, g=64, b=0},
+	groups = {liquid=2, puts_out_fire=1},
+})
