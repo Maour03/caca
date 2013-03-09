@@ -1,5 +1,5 @@
 minetest.register_node("caca:caca_block", {
-    description = {"Poop block"},
+    description = "Poop block",
     tiles = {"caca_block.png"},
     groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2},
 })
